@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 export const LoginContext = React.createContext()
 
-const { API_URL } = process.env
+const { REACT_APP_API_URL, REACT_APP_SECRET } = process.env
 
 function DuAuthMich (props) {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -13,7 +13,7 @@ function DuAuthMich (props) {
   async function login (credentials) {
     const { username, password } = credentials
     try {
-      const raw = await fetch(`${API_URL}/signin`, {
+      const raw = await fetch(`${REACT_APP_API_URL}/signin`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ function DuAuthMich (props) {
 
   const validateToken = useCallback(async function (token) {
     try {
-      const user = jwt.verify(token, "fine, keep your secrets")
+      const user = jwt.verify(token, REACT_APP_SECRET)
       setLoginState(true, token, user)
     } catch (error) {
       setLoginState(false, null, {})
