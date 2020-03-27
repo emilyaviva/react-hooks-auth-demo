@@ -18,8 +18,8 @@ REACT_APP_SECRET="fine, keep your secrets"
 6. From the server directory, run `yarn dev` to start the server with `nodemon` for auto-reloading on code change (or with `yarn start` to run with regular `node`).
 7. Make sure you seed a user or two with different roles into your database by sending some HTTP requests, e.g.:
 ```
-$ http post :3333/roles name=admin permissions:='["create" "read" "update" "delete"]'
-$ http post :3333/roles name=editor permissions:='["create" "read" "update"]'
+$ http post :3333/roles name=admin permissions:='["create","read","update","delete"]'
+$ http post :3333/roles name=editor permissions:='["create","read","update"]'
 $ http post :3333/roles name=user permissions:='["read"]'
 
 $ http post :3333/signup username=dumbledore password=drowssap role=admin
